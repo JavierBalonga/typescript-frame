@@ -20,9 +20,8 @@
     "pretest:debug": "sequelize-cli db:seed:all",
     "test:debug": "mocha -r ts-node/register --inspect-brk test/**/*.ts --exit",
     "posttest:debug": "sequelize-cli db:seed:undo:all",
-    "preci": "sequelize-cli db:seed:all",
+    "preci": "sequelize-cli db:migrate && sequelize-cli db:seed:all",
     "ci": "mocha --config test/.mocharc.yml test/**/*.ts --exit",
-    "postci": "sequelize-cli db:seed:undo:all",
     "seed": "sequelize-cli db:seed:all"
   },
   "dependencies": {
