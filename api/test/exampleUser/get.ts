@@ -5,7 +5,6 @@ import Server from '../../server';
 import db from '../../server/models';
 
 describe('GET /api/v1/exampleUser/', () => {
-
   it('should get all example users', () =>
     request(Server)
       .get('/api/v1/exampleUser')
@@ -13,5 +12,4 @@ describe('GET /api/v1/exampleUser/', () => {
       .then((r) => {
         expect(r.body).to.be.an('array').that.is.not.empty;
       }));
-
 });

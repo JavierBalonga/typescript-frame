@@ -44,9 +44,7 @@ export default express
   .delete('/', (req: Request, res: Response, next: NextFunction): void => {
     const { id } = req.body;
     if (!id)
-      return next(
-        new Error('The body must have a id to delete a exampleUser')
-      );
+      return next(new Error('The body must have a id to delete a exampleUser'));
     controller
       .delete(id)
       .then((r) => res.status(200).send(r))
