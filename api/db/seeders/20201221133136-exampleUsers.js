@@ -7,8 +7,16 @@ module.exports = {
       'example_users',
       [
         {
+          id: 1,
           first_name: 'John',
           last_name: 'Doe',
+          created_at: new Date(),
+          updated_at: new Date(),
+        },
+        {
+          id: 2,
+          first_name: 'Mary',
+          last_name: 'Gant',
           created_at: new Date(),
           updated_at: new Date(),
         },

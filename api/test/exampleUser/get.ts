@@ -2,7 +2,6 @@ import 'mocha';
 import { expect } from 'chai';
 import request from 'supertest';
 import Server from '../../server';
-import db from '../../server/models';
 
 describe('GET /api/v1/exampleUser/', () => {
   it('should get all example users', () =>

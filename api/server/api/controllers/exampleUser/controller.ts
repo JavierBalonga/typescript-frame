@@ -3,7 +3,7 @@ import db from '../../../models';
 export class ExampleUsersController {
   read() {
     return db.ExampleUser.findAll({
-      attributes: ['firstName', 'lastName'],
+      attributes: ['id', 'firstName', 'lastName'],
     });
   }
 
