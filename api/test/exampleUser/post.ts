@@ -21,7 +21,7 @@ describe('POST /api/v1/exampleUser/', () => {
         expect(user.lastName).to.be.equal('user');
       }));
 
-  afterEach(() =>
+  after(() =>
     db.ExampleUser.destroy({ where: { firstName: 'test', lastName: 'user' } })
   );
 });
