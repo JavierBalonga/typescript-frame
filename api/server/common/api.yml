@@ -1,0 +1,131 @@
+openapi: 3.0.1
+info:
+  title: appName-api
+  description: El Potrero - appName API
+  version: 1.0.0
+
+servers:
+  - url: /api/v1
+
+tags:
+  - name: ExampleUser
+    description: Simple example endpoints
+  - name: Specification
+    description: The swagger API specification
+
+paths:
+  /exampleUser:
+    get:
+      tags:
+        - ExampleUser
+      description: Fetch all example users
+      responses:
+        200:
+          description: Returns all example users
+          content: {}
+
+    post:
+      tags:
+        - ExampleUser
+      description: Create a new example user
+      requestBody:
+        required: true
+        description: an example user
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - firstName
+                - lastName
+              properties:
+                firstName:
+                  type: string
+                  example: Will
+                lastName:
+                  type: string
+                  example: Smith
+      responses:
+        200:
+          description: Returns all example users
+          content: {}
+
+    put:
+      tags:
+        - ExampleUser
+      description: Update a example user
+      requestBody:
+        required: true
+        description: an example user with his id
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - firstName
+                - lastName
+              properties:
+                id:
+                  type: number
+                  example: 1
+                firstName:
+                  type: string
+                  example: William
+                lastName:
+                  type: string
+                  example: Smithty
+      responses:
+        200:
+          description: Returns all example users
+          content: {}
+
+    delete:
+      tags:
+        - ExampleUser
+      description: Delete a example user
+      requestBody:
+        required: true
+        description: an id of a example user
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: number
+                  example: 1
+      responses:
+        200:
+          description: Returns all example users
+          content: {}
+
+  /examples/{id}:
+    get:
+      tags:
+        - Examples
+      parameters:
+        - name: id
+          in: path
+          description: The id of the example to retrieve
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Return the example with the specified id
+          content: {}
+        404:
+          description: Example not found
+          content: {}
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
+          content: {}
