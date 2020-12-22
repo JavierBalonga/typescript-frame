@@ -1,5 +1,12 @@
-require: ts-node/register
+require: 
+  - ts-node/register
+spec: 
+  - 'test/**/*.{js,ts}'
+watch-files:
+  - 'test/**/*.{js,ts}'
 full-trace: true
+exit: true
+color: true
 node:
   - 14
   - 13
