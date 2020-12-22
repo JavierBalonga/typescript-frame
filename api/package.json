@@ -18,9 +18,10 @@
     "test": "set NODE_ENV=test&& yarn mocha",
     "test:dev": "yarn test -w",
     "test:debug": "yarn test --inspect-brk",
+    "pretest": "sequelize-cli db:drop && sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all",
     "ci": "set NODE_ENV=ci&& yarn mocha",
+    "preci": "sequelize-cli db:migrate && sequelize-cli db:seed:all",
     "mocha": "mocha --config test/.mocharc.yml",
-    "premocha": "sequelize-cli db:drop && sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all",
     "seed": "sequelize-cli db:seed:all",
     "seed:undo": "sequelize-cli db:seed:undo",
     "seed:undo:all": "sequelize-cli db:seed:undo:all"
