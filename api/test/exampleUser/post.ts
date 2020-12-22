@@ -11,15 +11,13 @@ describe('POST /api/v1/exampleUser/', () => {
       .send({ firstName: 'test', lastName: 'user' })
       .expect('Content-Type', /json/)
       .then((r) => {
-        console.log(r.body.errors);
         expect(r.body).to.be.an('array').that.is.not.empty;
         return db.ExampleUser.findOne({
           where: { firstName: 'test', lastName: 'user' },
         });
       })
       .then((user) => {
-        expect(user.firstName).to.be.equal('test');
-        expect(user.lastName).to.be.equal('user');
+        expect(user).to.exist;
       }));
 
   after(() =>

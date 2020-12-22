@@ -2,28 +2,32 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /* console.log("database:", queryInterface.sequelize.options.database) */
-    return queryInterface.bulkInsert(
-      'example_users',
-      [
-        {
-          id: 1,
-          first_name: 'John',
-          last_name: 'Doe',
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-        {
-          id: 2,
-          first_name: 'Mary',
-          last_name: 'Gant',
-          created_at: new Date(),
-          updated_at: new Date(),
-        },
-      ],
-      {}
-    )
-    .catch(console.log);
+    return queryInterface
+      .bulkInsert(
+        'example_users',
+        [
+          {
+            id: 1,
+            first_name: 'John',
+            last_name: 'Doe',
+            created_at: new Date(),
+            updated_at: new Date(),
+          },
+          {
+            id: 2,
+            first_name: 'Mary',
+            last_name: 'Gant',
+            created_at: new Date(),
+            updated_at: new Date(),
+          },
+        ],
+        { returning: true }
+      )
+      .then((r) =>
+        queryInterface.sequelize.query(
+          `ALTER SEQUENCE example_users_id_seq RESTART WITH ${r.length + 1}`
+        )
+      );
   },
 
   down: (queryInterface, Sequelize) => {

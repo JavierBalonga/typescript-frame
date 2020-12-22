@@ -19,6 +19,6 @@ describe('DELETE /api/v1/exampleUser/', () => {
       }));
 
   after(() =>
-    db.ExampleUser.create({ id: 1, first_name: 'John', last_name: 'Doe' })
+    db.ExampleUser.create({ id: 1, firstName: 'John', lastName: 'Doe' })
   );
 });
