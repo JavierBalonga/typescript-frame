@@ -10,7 +10,7 @@
     "start": "node dist/index.js",
     "compile": "ts-node build.ts && tsc",
     "dev": "set NODE_ENV=development&& nodemon server/index.ts | pino-pretty",
-    "commit": "yarn test && yarn lint",
+    "test:all": "yarn test && yarn lint",
     "dev:debug": "set NODE_ENV=development&& nodemon --exec \"node -r ts-node/register --inspect-brk\" server/index.ts | pino-pretty",
     "lint": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet",
     "lint:fix": "yarn lint --fix",
