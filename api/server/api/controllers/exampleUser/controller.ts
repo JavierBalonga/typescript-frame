@@ -3,14 +3,12 @@ import db from '../../../models';
 export class ExampleUsersController {
   read() {
     return db.ExampleUser.findAll({
-      attributes: ['firstName', 'lastName'],
+      attributes: ['id', 'firstName', 'lastName'],
     });
   }
 
   create({ firstName, lastName }) {
-    return db.ExampleUser.findOrCreate({
-      where: { firstName, lastName },
-    }).then(this.read);
+    return db.ExampleUser.create({ firstName, lastName }).then(this.read);
   }
 
   update(id, { firstName, lastName }) {

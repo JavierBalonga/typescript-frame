@@ -14,11 +14,15 @@
     "lint": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet",
     "lint:fix": "eslint -c .eslintrc.js \"{server, test}/**/*.{js,ts,tsx}\" --quiet --fix",
     "prettier": "prettier -c -w \"{server,test}/**/*.{js,ts,tsx}\"",
-    "pretest": "sequelize-cli db:seed:all",
+    "pretest": "sequelize-cli db:seed:undo:all && sequelize-cli db:seed:all",
     "test": "mocha --config test/.mocharc.yml test/**/*.ts --exit",
     "posttest": "sequelize-cli db:seed:undo:all",
+    "pretest:debug": "sequelize-cli db:seed:undo:all && sequelize-cli db:seed:all",
     "test:debug": "mocha -r ts-node/register --inspect-brk test/**/*.ts --exit",
-    "ci": "mocha -r ts-node/register test/**/*.ts --delay --exit",
+    "posttest:debug": "sequelize-cli db:seed:undo:all",
+    "preci": "sequelize-cli db:migrate && sequelize-cli db:seed:all",
+    "ci": "mocha --config test/.mocharc.yml test/**/*.ts --exit",
+    "postci": "sequelize-cli db:seed:undo:all",
     "seed": "sequelize-cli db:seed:all"
   },
   "dependencies": {
