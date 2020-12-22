@@ -8,9 +8,7 @@ export class ExampleUsersController {
   }
 
   create({ firstName, lastName }) {
-    return db.ExampleUser.findOrCreate({
-      where: { firstName, lastName },
-    }).then(this.read);
+    return db.ExampleUser.create({ firstName, lastName }).then(this.read);
   }
 
   update(id, { firstName, lastName }) {
