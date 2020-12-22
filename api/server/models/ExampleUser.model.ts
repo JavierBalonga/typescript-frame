@@ -17,5 +17,16 @@ module.exports = (sequelize) => {
       modelName: 'example_user',
     }
   );
+
+  ExampleUser.addHook('afterSync', (options) => {
+    if (options.force) {
+      ExampleUser.create({
+        id: 1,
+        firstName: 'admin',
+        lastName: 'admin',
+      });
+    }
+  });
+
   return ExampleUser;
 };

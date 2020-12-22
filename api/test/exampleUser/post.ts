@@ -20,7 +20,7 @@ describe('POST /api/v1/exampleUser/', () => {
         expect(user).to.exist;
       }));
 
-  after(() =>
+  afterEach(() =>
     db.ExampleUser.destroy({ where: { firstName: 'test', lastName: 'user' } })
   );
 });
